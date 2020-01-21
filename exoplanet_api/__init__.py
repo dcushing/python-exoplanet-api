@@ -1,14 +1,14 @@
 import os
 
-from flask import Flask, jsonify, request 
+from flask import Flask, jsonify, request
 
-
+# note to self: namespace the api!!
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
+        DATABASE=os.path.join(app.instance_path, 'exoplanet_api.sqlite'),
     )
 
     if test_config is None:
@@ -25,13 +25,18 @@ def create_app(test_config=None):
         pass
 
     # a simple page that says hello
-    @app.route('/', methods = ['GET','POST'])
+    @app.route('/hello', methods = ['GET','POST'])
     def home():
         if(request.method == 'GET'):
             data = 'Hello, World!'
             return jsonify({'data': data})
 
+    # database
     from . import db
     db.init_app(app)
-    
+
+    # exoplanet
+    from . import exoplanet
+    app.register_blueprint(exoplanet.bp)
+
     return app
