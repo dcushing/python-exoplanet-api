@@ -39,4 +39,8 @@ def create_app(test_config=None):
     from . import exoplanet
     app.register_blueprint(exoplanet.bp)
 
+    # api
+    from .api.v1 import v1
+    app.register_blueprint(v1)
+
     return app
