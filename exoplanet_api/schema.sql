@@ -8,5 +8,5 @@ CREATE TABLE exoplanet (
 	num_planets_in_system INTEGER,
 	discovery_year INTEGER NOT NULL,
 	num_moons INTEGER,
-	link_to_wiki: TEXT
-)
+	link_to_wiki TEXT
+);

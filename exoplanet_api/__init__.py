@@ -31,4 +31,7 @@ def create_app(test_config=None):
             data = 'Hello, World!'
             return jsonify({'data': data})
 
+    from . import db
+    db.init_app(app)
+    
     return app
