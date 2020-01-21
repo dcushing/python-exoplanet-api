@@ -35,10 +35,6 @@ def create_app(test_config=None):
     from . import db
     db.init_app(app)
 
-    # exoplanet
-    from . import exoplanet
-    app.register_blueprint(exoplanet.bp)
-
     # api
     from .api.v1 import v1
     app.register_blueprint(v1)
