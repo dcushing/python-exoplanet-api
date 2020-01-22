@@ -1,0 +1,3 @@
+include exoplanet_api/schema.sql
+graft exoplanet_api/api
+global-exclude *.pyc
